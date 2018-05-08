@@ -24,8 +24,18 @@ Person.prototype.setName = function(fullName) {
 }
 
 const person1 = new Person('John', 'Doe', 23, ['Reading', 'Biking'])
+
+person1.getBio = function() {
+  return 'this is fake'
+}
 person1.setName('Alexis Doe');
 console.log(person1.getBio());
 
+
 const person2 = new Person('Mariah', 'Doe', 23)
+console.log(person2.getBio());
+
+Person.prototype.getBio = function() {
+  return 'testing testing'
+}
 console.log(person2.getBio());
