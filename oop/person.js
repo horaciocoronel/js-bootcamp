@@ -14,10 +14,13 @@ class Person {
     })
     return bio
   }
-  setName(fullName) {
+  set fullName(fullName) {
     const names = fullName.split(" ");
     this.firstName = names[0];
     this.lastName = names[1];
+  }
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`
   }
 }
 
@@ -27,7 +30,7 @@ class Employee extends Person {
     this.position = position
   }
   getBio() {
-    return `${this.lastName} is a ${this.position}`
+    return `${this.fullName} is a ${this.position}`
     // name is a position
   }
   getYearsLeft() {
@@ -37,7 +40,7 @@ class Employee extends Person {
 
 const employee1 = new Employee('Claire', 'Doe', 23, 'Manager', ['biking'])
 console.log(employee1)
-employee1.setName('Alexis Doe');
+employee1.fullName = 'Alexis Doe';
 console.log(employee1.getBio());
 console.log(employee1.getYearsLeft())
 
@@ -46,7 +49,7 @@ const person1 = new Person('John', 'Doe', 23, ['Reading', 'Biking'])
 person1.getBio = function() {
   return 'this is fake'
 }
-person1.setName('Alexis Doe');
+// person1.setName('Alexis Doe');
 console.log(person1.getBio());
 
 
@@ -76,6 +79,7 @@ class Student extends Person {
 const student1 = new Student('Laura', 'Doe', 23, 88, ['biking', 'reading'])
 console.log('-------------------------------');
 console.log(student1.getBio())
+student1.fullName = 'Alex Doe'
 student1.updateGrade(-20)
 console.log(student1.getBio())
 // console.log(student1)
