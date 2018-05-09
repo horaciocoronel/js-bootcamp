@@ -10,14 +10,13 @@ window.addEventListener('keypress', function(e) {
   game1.makeGuess(guess)
   puzzleEl.textContent = game1.puzzle
   guessesEl.textContent = game1.statusMessage;
-  console.log(game1.status)
 })
 
 const request = new XMLHttpRequest();
 request.addEventListener('readystatechange', (e) => {
   if(e.target.readyState === 4 && e.target.status === 200) {
     const data = JSON.parse(e.target.responseText);
-    console.log(data)
+    // console.log(data)
   } else if (e.target.readyState === 4) {
     console.log('And the error has taken place')
   }
@@ -25,3 +24,17 @@ request.addEventListener('readystatechange', (e) => {
 )
 request.open('GET', 'http://puzzle.mead.io/puzzle')
 request.send()
+
+const req = new XMLHttpRequest();
+req.addEventListener('readystatechange', (e) => {
+  if(e.target.readyState === 4 && e.target.status === 200) {
+  const countryCode = 'CA'
+  const data = JSON.parse(e.target.responseText); 
+  const countryData = data.find((country) => country.alpha2Code === countryCode)
+  console.log(countryData.name) 
+  } else if (e.target.readyState === 4) {
+    console.log('error')
+  }
+})
+req.open('GET', 'https://restcountries.eu/rest/v2/all')
+req.send()
