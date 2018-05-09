@@ -12,7 +12,7 @@ window.addEventListener('keypress', function(e) {
   guessesEl.textContent = game1.statusMessage;
 })
 
-getPuzzle((error, puzzle) => {
+getPuzzle("2", (error, puzzle) => {
   if(error) {
     console.log(`${error}`)
   } else {
@@ -20,18 +20,13 @@ getPuzzle((error, puzzle) => {
   }
 })
 
-
-
-const req = new XMLHttpRequest();
-req.addEventListener('readystatechange', (e) => {
-  if(e.target.readyState === 4 && e.target.status === 200) {
-  const countryCode = 'CA'
-  const data = JSON.parse(e.target.responseText); 
-  const countryData = data.find((country) => country.alpha2Code === countryCode)
-  console.log(countryData.name) 
-  } else if (e.target.readyState === 4) {
-    console.log('error')
+getCountryDetails("CA", (error, country) => {
+  if(error) {
+    console.log(`${error}`)
+  } else {
+    console.log(`Country name: ${country.name}`)  
   }
 })
-req.open('GET', 'https://restcountries.eu/rest/v2/all')
-req.send()
+
+
+
