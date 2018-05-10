@@ -15,7 +15,8 @@ window.addEventListener('keypress', function(e) {
 getPuzzle('2')
   .then((puzzle) => {
     console.log(puzzle)
-  }, (err) => {
+  })
+  .catch((err) => {
     console.log(`Error: ${err}`)
   }
   )
@@ -28,4 +29,17 @@ getCountryDetails("CA")
   }
   )
 
-
+// fetch('http://puzzle.mead.io/puzzle', {})
+//   .then((response) => {
+//     if(response.status === 200) {
+//       return response.json()
+//     } else {
+//       throw new Error(`Unable to fetch the puzzle`)
+//     }
+//   }
+//   )
+//   .then((data) => {
+//     console.log(`data promise`, data.puzzle)
+//   }
+//   )
+//   .catch((err) => console.log(err))
